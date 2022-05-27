@@ -4,6 +4,7 @@ import Nav from './Nav';
 import Banner from './Banner';
 
 const HomeScreen = () => {
+  /* RETURN RENDER */
   return (
     <div className='homeScreen'>
       <Nav />

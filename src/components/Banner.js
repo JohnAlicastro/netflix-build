@@ -2,6 +2,12 @@ import React from 'react';
 import './Banner.css';
 
 const Banner = () => {
+  /* FUNC TO TRUNCATE DESCRIPTION IF OVER n CHARACTERS LONG */
+  const truncate = (string, n) => {
+    return string?.length > n ? string.substring(0, n - 1) + '...' : string;
+  };
+
+  /* RETURN RENDER */
   return (
     <header
       className='banner'
@@ -18,7 +24,16 @@ const Banner = () => {
           <button className='banner__button'>Play</button>
           <button className='banner__button'>My List</button>
         </div>
-        <h1 className='banner__description'>This is a test description</h1>
+        <h1 className='banner__description'>
+          {truncate(
+            `This is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test
+            descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a
+            test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis
+            is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test
+            descriptionThis is a test descriptionThis is a test description`,
+            150
+          )}
+        </h1>
       </div>
       <div className='banner--fadeBottom' />
     </header>

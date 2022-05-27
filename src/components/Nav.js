@@ -2,24 +2,21 @@ import React, { useEffect, useState } from 'react';
 import './Nav.css';
 
 const Nav = () => {
+  /* STATE - SHOW NAV__BLACK */
   const [show, handleShow] = useState(false);
 
+  /* FUNC TO SHOW NAV__BLACK IF SCROLLED DOWN PAST 100 */
   const transitionNavBar = () => {
-    // if (window.scrollY > 100) {
-    //   handleShow(true);
-    // } else {
-    //   handleShow(false);
-    // }
-
-    // refactored above code
     window.scrollY > 100 ? handleShow(true) : handleShow(false);
   };
 
+  /* EFFECT - TRACK SCROLL FOR transitionNavBar FUNC ABOVE */
   useEffect(() => {
     window.addEventListener('scroll', transitionNavBar);
     return () => window.removeEventListener('scroll', transitionNavBar);
   });
 
+  /* RETURN RENDER */
   return (
     <div className={`nav ${show && 'nav__black'}`}>
       <div className='nav__contents'>
