@@ -29,7 +29,7 @@ const Banner = () => {
     }
   }, []);
 
-  console.log(movie);
+  // console.log(movie);
 
   /* FUNC TO TRUNCATE DESCRIPTION IF OVER n CHARACTERS LONG */
   const truncate = (string, n) => {
