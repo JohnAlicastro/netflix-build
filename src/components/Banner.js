@@ -41,27 +41,27 @@ const Banner = () => {
     <header
       className='banner'
       style={{
-        // backgroundImage: `url('https://i.imgur.com/e1hLQ2m.png')`,
-        backgroundImage: `url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_flag.svg/1200px-Black_flag.svg.png')`,
+        // BLACK BACKGROUND (TEMP) //
+        // backgroundImage: `url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_flag.svg/1200px-Black_flag.svg.png')`,
+        // BACKGROUND IMAGE FROM MOVIE TO BE DISPLAYED //
+        backgroundImage: `url('https://image.tmdb.org/t/p/original/${movie?.backdrop_path}')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
       }}
     >
       <div className='banner__contents'>
-        <h1 className='banner__title'>Movie Name</h1>
+        {/* <h1 className='banner__title'>Movie Name</h1> */}
+        <h1 className='banner__title'>{movie?.title || movie?.name || movie?.original_name}</h1>
         <div className='banner__buttons'>
           <button className='banner__button'>Play</button>
           <button className='banner__button'>My List</button>
         </div>
         <h1 className='banner__description'>
-          {truncate(
-            `This is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test
-            descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a
-            test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis
-            is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test
-            descriptionThis is a test descriptionThis is a test description`,
+          {/* {truncate(
+            `This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description This is a test description `,
             150
-          )}
+          )} */}
+          {truncate(movie?.overview, 150)}
         </h1>
       </div>
       <div className='banner--fadeBottom' />
