@@ -3,6 +3,7 @@ import './HomeScreen.css';
 import Nav from './Nav';
 import Banner from './Banner';
 
+/* HOMESCREEN COMPONENT */
 const HomeScreen = () => {
   /* RETURN RENDER */
   return (

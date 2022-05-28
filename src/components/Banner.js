@@ -1,7 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Banner.css';
+// IMPORTING insatnce AS axios FROM LOCAL axios.js FILE IN api FOLDER //
+import axios from '../api/axios.js';
+import requests from '../api/Requests.js';
 
+/* BANNER COMPONENT */
 const Banner = () => {
+  /* MOVIE TO BE DISPLAYED */
+  const [movie, setMovie] = useState([]);
+
+  /* EFFECT - FETCH REQUEST TO TMDB FOR NETFLIXORIGINALS ON BANNER MOUNT */
+  useEffect(() => {
+    try {
+      // FETCH DATA FUNC //
+      const fetchData = async () => {
+        const request = await axios.get(requests.fetchNetflixOriginals);
+
+        // SET MOVIE TO RANDOM ONE FROM RESULTS //
+        setMovie(request.data.results[Math.floor(Math.random() * request.data.results.length - 1)]);
+        // RETURN REQUEST FOR GOOD MEASURE //
+        return request;
+      };
+
+      // INVOKE FETCHDATA FUNC //
+      fetchData();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  console.log(movie);
+
   /* FUNC TO TRUNCATE DESCRIPTION IF OVER n CHARACTERS LONG */
   const truncate = (string, n) => {
     return string?.length > n ? string.substring(0, n - 1) + '...' : string;

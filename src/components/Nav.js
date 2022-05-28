@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Nav.css';
 
+/* NAV COMPONENT */
 const Nav = () => {
   /* STATE - SHOW NAV__BLACK */
   const [show, handleShow] = useState(false);
