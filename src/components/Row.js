@@ -40,15 +40,20 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
       {/* TITLE OF ROW */}
       <h2>{title}</h2>
 
-      {/* MAP THROUGH MOVIES */}
-      {movies.map((movie) => (
-        // GET MOVIE IMAGE WITH base_url AND THEN ADDITIONAL URL BASED ON isLargeRow //
-        <img src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} />
-      ))}
+      <div className='row__posters'>
+        {/* MAP THROUGH MOVIES */}
+        {movies.map((movie) => (
+          // GET MOVIE IMAGE WITH base_url AND THEN ADDITIONAL URL BASED ON isLargeRow //
+          <img
+            className={`row__poster ${isLargeRow && 'row__posterLarge'}`}
+            key={movie.id}
+            src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
+            alt={movie.name}
+          />
+        ))}
+      </div>
     </div>
   );
 };
 
 export default Row;
-
-// test 4
