@@ -22,7 +22,7 @@ const SingupScreen = () => {
       });
   };
 
-  //test1
+  //test2
 
   /* SIGNIN FUNC */
   const signIn = (e) => {
