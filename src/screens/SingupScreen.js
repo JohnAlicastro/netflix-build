@@ -22,6 +22,8 @@ const SingupScreen = () => {
       });
   };
 
+  //test1
+
   /* SIGNIN FUNC */
   const signIn = (e) => {
     e.preventDefault();
