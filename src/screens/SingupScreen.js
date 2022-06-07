@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+// IMPORTING auth FROM LOCAL firebase.js FILE IN src FOLDER //
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import './SingupScreen.css';
