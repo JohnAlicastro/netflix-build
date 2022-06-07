@@ -9,24 +9,34 @@ const SingupScreen = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  /* REGISTER FUNC */
+  /* REGISTER USER FUNC */
   const register = (e) => {
     e.preventDefault();
 
     // TRY TO CREATE USER IN FIREBASE //
-    try {
-      createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value).then((authUser) => {
+    createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
+      .then((authUser) => {
         console.log(authUser);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        alert(error.message);
       });
-    } catch (error) {
-      console.log(error);
-      alert(error.message);
-    }
   };
 
-  /* SIGNIN FUNC */
+  /* SIGNIN USER FUNC */
   const signIn = (e) => {
     e.preventDefault();
+
+    // TRY TO SIGNIN USER IN FIREBASE //
+    signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
+      .then((authUser) => {
+        console.log(authUser);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        alert(error.message);
+      });
   };
 
   /* RETURN RENDER */
