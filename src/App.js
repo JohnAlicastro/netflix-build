@@ -8,6 +8,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import './App.css';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
 /* APP COMPONENT */
 function App() {
@@ -57,6 +58,7 @@ function App() {
         ) : (
           <Routes>
             <Route path='/' element={<HomeScreen />} />
+            <Route path='/profile' element={<ProfileScreen />} />
           </Routes>
         )}
       </Router>

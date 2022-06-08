@@ -26,7 +26,7 @@ export const { login, logout } = userSlice.actions;
 // the state. Selectors can also be defined inline where they're used instead of //
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)` //
 
-/* EXPORT selectUser FUNCTION ALLOWS US TO ACCESS THE USER VALUE FROM THE userSlice IN THE STORE */
+/* EXPORT selectUser FUNC SELECTOR ALLOWS US TO ACCESS THE USER VALUE FROM THE userSlice IN THE STORE */
 export const selectUser = (state) => state.user.user;
 
 export default userSlice.reducer;
