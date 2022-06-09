@@ -7,6 +7,7 @@ const ProfileScreen = () => {
   return (
     <div className='profileScreen'>
       <h1>This is the profile</h1>
+      <h2>Test1</h2>
     </div>
   );
 };
