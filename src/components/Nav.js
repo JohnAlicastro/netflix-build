@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-/* useHistory is depricated */
-// import { useHistory } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './Nav.css';
 
@@ -8,10 +6,6 @@ import './Nav.css';
 const Nav = () => {
   /* STATE - SHOW NAV__BLACK */
   const [show, handleShow] = useState(false);
-
-  /* HISTORY - REACT ROUTER DOM - PUSHING '/profile' ONCLICK OF nav__avatar img IN RETURN RENDER BELOW */
-  /* useHistory is depricated */
-  // const history = useHistory();
 
   /* NAVIGATE - REACT ROUTER DOM - PASSING IN '/profile' or '/' ONCLICK OF imgS IN RETURN RENDER BELOW */
   const navigate = useNavigate();
