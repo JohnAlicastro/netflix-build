@@ -38,14 +38,14 @@ function App() {
       } else {
         // LOGGED OUT
         /* DISPATCH LOGOUT ACTION FROM REDUX */
-        dispatch(logout);
+        dispatch(logout());
       }
     });
 
     // RETURN unsubscribe AS A FUNCTION SO THAT WE DONT DUPLICATE THE onAuthStateChanged LISTENER, //
     // WE UNMOUNT THE CURRENT ONE AND THEN MOUNT A NEW ONE //
     return unsubscribe;
-  }, []);
+  }, [dispatch]);
 
   /* RETURN RENDER */
   return (
