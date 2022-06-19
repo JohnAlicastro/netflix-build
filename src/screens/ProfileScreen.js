@@ -20,7 +20,7 @@ const ProfileScreen = () => {
         <h1>Edit Profile</h1>
         <div className='profileScreen__info'>
           <img src='https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png' alt='' />
-          <div className='profileScreen__details'>
+          {/* <div className='profileScreen__details'>
             <h2>{user.email}</h2>
             <div className='profileScreen__plans'>
               <h3>Plans</h3>
@@ -28,7 +28,7 @@ const ProfileScreen = () => {
                 Sign Out
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
