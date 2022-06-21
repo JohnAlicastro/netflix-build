@@ -32,11 +32,11 @@ const SingupScreen = () => {
     // TRY TO SIGNIN USER IN FIREBASE //
     signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
       .then((authUser) => {
-        console.log(authUser);
+        // console.log(authUser);
       })
       .catch((error) => {
         console.log(error.message);
-        alert(error.message);
+        // alert(error.message);
       });
   };
 
@@ -53,10 +53,10 @@ const SingupScreen = () => {
         </button>
 
         <h4>
-          <span className='signupScreen__gray'>New to Netflix? </span>
+          {/* <span className='signupScreen__gray'>New to Netflix? </span>
           <span className='signupScreen__link' onClick={register}>
             Sign Up now.
-          </span>
+          </span> */}
         </h4>
       </form>
     </div>
