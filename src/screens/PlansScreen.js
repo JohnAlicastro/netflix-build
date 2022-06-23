@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 // IMPORTING db FROM LOCAL firebase.js FILE IN src FOLDER //
 import db from '../firebase';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../features/userSlice';
 import './PlansScreen.css';
 
 /* PLANSSCREEN COMPONENT */
@@ -9,26 +11,11 @@ const PlansScreen = () => {
   /* STATE - AVAILABLE PRODUCTS (PLANS) */
   const [products, setProducts] = useState([]);
 
+  /* USER VARIABLE GETTING user FROM REDUX STORE, USED FOR LOAD CHECKOUT FUNC & RETURN RENDER BELOW */
+  const user = useSelector(selectUser);
+
   /* EFFECT - PULL PRODUCTS (PLANS) INFO FROM DB ONCE ON MOUNT */
   useEffect(() => {
-    // db.collection('products')
-    //   .where('active', '==', true)
-    //   .get()
-    //   .then((querySnapshot) => {
-    //     const products = {};
-    //     querySnapshot.forEach(async (productDoc) => {
-    //       products[productDoc.id] = productDoc.data();
-    //       const priceSnap = await productDoc.ref.collection('prices').get();
-    //       priceSnap.docs.forEach((price) => {
-    //         products[productDoc.id].prices = {
-    //           priceId: price.id,
-    //           priceData: price.data,
-    //         };
-    //       });
-    //     });
-    //     setProducts(products);
-    //   });
-
     // QUERY //
     const q = query(collection(db, 'products'), where('active', '==', true));
 
