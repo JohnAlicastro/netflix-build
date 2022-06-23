@@ -47,6 +47,7 @@ const PlansScreen = () => {
 
   console.log(products);
 
+  //FIXME:
   /* LOAD CHECKOUT FUNC */
   const loadCheckout = async (priceId) => {
     // const docRef = await getDoc(doc(db, 'customers', user.uid));
@@ -56,12 +57,6 @@ const PlansScreen = () => {
       success_url: window.location.origin,
       cancel_url: window.location.origin,
     });
-
-    // await setDoc(doc(docRef.ref, 'checkout_sessions'), {
-    //   price: priceId,
-    //   success_url: window.location.origin,
-    //   cancel_url: window.location.origin,
-    // });
 
     /* ON SNAPSHOT */
     onSnapshot(docRef, async (snap) => {
@@ -74,7 +69,8 @@ const PlansScreen = () => {
 
       if (sessionId) {
         // we have a session, lets redirect to checkout, Init Stripe
-        const stripe = await loadStripe();
+        const stripe = await loadStripe('pk_test_51LDvSGHR9oRmjwsIfJ4rcA4DzytNuM6vGdE7a0As5GdNpfgaLMwmEWv7KSQaEZYIk4h9yxDk44in0XDvIzy22VGI00RUGKMpXU');
+        stripe.redirectToCheckout({ sessionId });
       }
     });
 
