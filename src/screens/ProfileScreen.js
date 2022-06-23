@@ -5,6 +5,7 @@ import { selectUser } from '../features/userSlice';
 import { auth } from '../firebase';
 import { signOut } from 'firebase/auth';
 import Nav from '../components/Nav';
+import PlansScreen from './PlansScreen';
 import './ProfileScreen.css';
 
 /* PROFILESCREEN COMPONENT */
