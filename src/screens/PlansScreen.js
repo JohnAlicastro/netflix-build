@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { doc, collection, query, where, getDocs, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
 // IMPORTING db FROM LOCAL firebase.js FILE IN src FOLDER //
 import db from '../firebase';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../features/userSlice';
+import { loadStripe } from '@stripe/stripe-js';
 import './PlansScreen.css';
 
 /* PLANSSCREEN COMPONENT */
@@ -47,7 +48,38 @@ const PlansScreen = () => {
   console.log(products);
 
   /* LOAD CHECKOUT FUNC */
-  const loadCheckout = async (priceId) => {};
+  const loadCheckout = async (priceId) => {
+    // const docRef = await getDoc(doc(db, 'customers', user.uid));
+    const collectionRef = await collection(db, 'customers', user.uid, 'checkout_sessions');
+    const docRef = await setDoc(doc(collectionRef), {
+      price: priceId,
+      success_url: window.location.origin,
+      cancel_url: window.location.origin,
+    });
+
+    // await setDoc(doc(docRef.ref, 'checkout_sessions'), {
+    //   price: priceId,
+    //   success_url: window.location.origin,
+    //   cancel_url: window.location.origin,
+    // });
+
+    /* ON SNAPSHOT */
+    onSnapshot(docRef, async (snap) => {
+      const { error, sessionId } = snap.data();
+
+      if (error) {
+        // show error to your customer
+        alert(`An error occured: ${error.message}`);
+      }
+
+      if (sessionId) {
+        // we have a session, lets redirect to checkout, Init Stripe
+        const stripe = await loadStripe();
+      }
+    });
+
+    console.log(docRef);
+  };
 
   /* RETURN RENDER */
   return (
