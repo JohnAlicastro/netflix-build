@@ -60,7 +60,21 @@ const PlansScreen = () => {
   console.log(products);
 
   /* RETURN RENDER */
-  return <div className='PlansScreen'>PlansScreen</div>;
+  return (
+    <div className='PlansScreen'>
+      {Object.entries(products).map(([productId, productData]) => {
+        // TODO: add logic to check if users subscription is active...
+        return (
+          <div className='plansScreen__plan'>
+            <div className='plansScreen__info'>
+              <h5>{productData.name}</h5>
+              <h6>{productData.description}</h6>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default PlansScreen;
