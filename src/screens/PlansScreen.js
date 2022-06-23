@@ -32,7 +32,7 @@ const PlansScreen = () => {
     // QUERY //
     const q = query(collection(db, 'products'), where('active', '==', true));
 
-    // GET DOCS //
+    // GET DOCS FROM FIREBASE //
     getDocs(q).then((querySnapshot) => {
       // TEMP PRODUCTS OBJ TO BE POPULATED //
       const products = {};
@@ -59,6 +59,9 @@ const PlansScreen = () => {
 
   console.log(products);
 
+  /* LOAD CHECKOUT FUNC */
+  const loadCheckout = async (priceId) => {};
+
   /* RETURN RENDER */
   return (
     <div className='PlansScreen'>
@@ -70,6 +73,8 @@ const PlansScreen = () => {
               <h5>{productData.name}</h5>
               <h6>{productData.description}</h6>
             </div>
+
+            <button onClick={() => loadCheckout(productData.prices.priceId)}>Subscribe</button>
           </div>
         );
       })}
