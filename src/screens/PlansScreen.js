@@ -51,12 +51,12 @@ const PlansScreen = () => {
   /* LOAD CHECKOUT FUNC */
   const loadCheckout = async (priceId) => {
     // const docRef = await getDoc(doc(db, 'customers', user.uid));
-    const collectionRef = await collection(db, 'customers', user.uid, 'checkout_sessions');
-    const docRef = await setDoc(doc(collectionRef), {
-      price: priceId,
-      success_url: window.location.origin,
-      cancel_url: window.location.origin,
-    });
+    // const collectionRef = await collection(db, 'customers', user.uid, 'checkout_sessions');
+    // const docRef = await setDoc(doc(collectionRef), {
+    //   price: priceId,
+    //   success_url: window.location.origin,
+    //   cancel_url: window.location.origin,
+    // });
 
     /* ON SNAPSHOT */
     onSnapshot(docRef, async (snap) => {
