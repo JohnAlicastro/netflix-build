@@ -98,12 +98,18 @@ const PlansScreen = () => {
   /* RETURN RENDER */
   return (
     <div className='PlansScreen'>
+      <br />
+      {/* CONDITIONAL TEXT RENDERING FOR RENEWAL DATE IF THERE IS ACTIVE SUBSCRIPTION */}
+      {subscription && <p>Renewal date: {new Date(subscription?.current_period_end * 1000).toLocaleDateString()}</p>}
+
+      {/* RENDER ALL AVAILABLE ACTIVE PRODUCTS (PLANS) */}
       {Object.entries(products).map(([productId, productData]) => {
         // GET USER CURRENT PACKAGE INFO //
         const isCurrentPackage = productData.name?.toLowerCase().includes(subscription?.role);
 
         return (
-          <div className='plansScreen__plan'>
+          // CONDITIONAL STRING VALUE FOR className //
+          <div key={productId} className={`${isCurrentPackage && 'plansScreen__plan--disabled'} plansScreen__plan`}>
             <div className='plansScreen__info'>
               <h5>{productData.name}</h5>
               <h6>{productData.description}</h6>
