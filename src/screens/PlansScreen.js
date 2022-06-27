@@ -45,52 +45,46 @@ const PlansScreen = () => {
     });
   }, []);
 
-  console.log(products);
+  // console.log(products);
 
-  //FIXME:
   /* LOAD CHECKOUT FUNC */
   const loadCheckout = async (priceId) => {
-    // const collectionRef = await collection(db, 'customers', user.uid, 'checkout_sessions');
-    // const docRef = await setDoc(doc(collectionRef), {
-    //   price: priceId,
-    //   success_url: window.location.origin,
-    //   cancel_url: window.location.origin,
-    // });
-
-    /* DOCREF */
+    /* DOCREF FOR STRIPE / FIREBASE CREATE NEW CHECKOUT SESSION DOC IN FIREBASE */
     const docRef = await addDoc(collection(db, `customers/${user.uid}/checkout_sessions`), {
       price: priceId,
       success_url: window.location.origin,
       cancel_url: window.location.origin,
     });
 
-    /* ON SNAPSHOT */
+    /* ON SNAPSHOT - INIT STRIPE AND REDIRECT TO CHECKOUT */
     onSnapshot(docRef, async (snap) => {
       // console.log(snap);
 
-      // const { error, sessionId } = snap.data();
+      // WORKS, BUT DNU //
+      // const { error, url } = snap.data();
 
       // if (error) {
-      //   // show error to your customer
+      //   // Show an error to your customer and
+      //   // inspect your Cloud Function logs in the Firebase console.
       //   alert(`An error occured: ${error.message}`);
       // }
-
-      // if (sessionId) {
-      //   // we have a session, lets redirect to checkout, Init Stripe
-      //   const stripe = await loadStripe('pk_test_51LDvSGHR9oRmjwsIfJ4rcA4DzytNuM6vGdE7a0As5GdNpfgaLMwmEWv7KSQaEZYIk4h9yxDk44in0XDvIzy22VGI00RUGKMpXU');
-      //   stripe.redirectToCheckout({ sessionId });
+      // if (url) {
+      //   // We have a Stripe Checkout URL, let's redirect.
+      //   window.location.assign(url);
       // }
 
-      const { error, url } = snap.data();
+      // WORKS! //
+      const { error, sessionId } = snap.data();
 
       if (error) {
         // Show an error to your customer and
         // inspect your Cloud Function logs in the Firebase console.
         alert(`An error occured: ${error.message}`);
       }
-      if (url) {
-        // We have a Stripe Checkout URL, let's redirect.
-        window.location.assign(url);
+      if (sessionId) {
+        // we have a session, lets redirect to checkout, Init Stripe
+        const stripe = await loadStripe('pk_test_51LDvSGHR9oRmjwsIfJ4rcA4DzytNuM6vGdE7a0As5GdNpfgaLMwmEWv7KSQaEZYIk4h9yxDk44in0XDvIzy22VGI00RUGKMpXU');
+        stripe.redirectToCheckout({ sessionId });
       }
     });
 
