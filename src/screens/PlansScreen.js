@@ -50,7 +50,6 @@ const PlansScreen = () => {
   //FIXME:
   /* LOAD CHECKOUT FUNC */
   const loadCheckout = async (priceId) => {
-    // const docRef = await getDoc(doc(db, 'customers', user.uid));
     const collectionRef = await collection(db, 'customers', user.uid, 'checkout_sessions');
     const docRef = await setDoc(doc(collectionRef), {
       price: priceId,
@@ -60,18 +59,20 @@ const PlansScreen = () => {
 
     /* ON SNAPSHOT */
     onSnapshot(docRef, async (snap) => {
-      const { error, sessionId } = snap.data();
+      console.log(snap);
 
-      if (error) {
-        // show error to your customer
-        alert(`An error occured: ${error.message}`);
-      }
+      // const { error, sessionId } = snap.data();
 
-      if (sessionId) {
-        // we have a session, lets redirect to checkout, Init Stripe
-        const stripe = await loadStripe('pk_test_51LDvSGHR9oRmjwsIfJ4rcA4DzytNuM6vGdE7a0As5GdNpfgaLMwmEWv7KSQaEZYIk4h9yxDk44in0XDvIzy22VGI00RUGKMpXU');
-        stripe.redirectToCheckout({ sessionId });
-      }
+      // if (error) {
+      //   // show error to your customer
+      //   alert(`An error occured: ${error.message}`);
+      // }
+
+      // if (sessionId) {
+      //   // we have a session, lets redirect to checkout, Init Stripe
+      //   const stripe = await loadStripe('pk_test_51LDvSGHR9oRmjwsIfJ4rcA4DzytNuM6vGdE7a0As5GdNpfgaLMwmEWv7KSQaEZYIk4h9yxDk44in0XDvIzy22VGI00RUGKMpXU');
+      //   stripe.redirectToCheckout({ sessionId });
+      // }
     });
 
     console.log(docRef);
