@@ -11,9 +11,31 @@ import './PlansScreen.css';
 const PlansScreen = () => {
   /* STATE - AVAILABLE PRODUCTS (PLANS) */
   const [products, setProducts] = useState([]);
-
   /* USER VARIABLE GETTING user FROM REDUX STORE, USED FOR LOAD CHECKOUT FUNC & RETURN RENDER BELOW */
   const user = useSelector(selectUser);
+  /* STATE - WHICH SUBSCRIPTION USER HAS ACTIVE */
+  const [subscription, setSubscription] = useState(null);
+
+  /* EFFECT - PULL USER SUBSCRIPTION INFO FROM DB */
+  useEffect(() => {
+    // QUERY //
+    const q = query(collection(db, `customers/${user.uid}/subscriptions`));
+
+    // GET DOCS FROM FIREBASE //
+    getDocs(q).then((querySnapshot) => {
+      // console.log(querySnapshot);
+
+      querySnapshot.forEach(async (subscription) => {
+        // console.log(subscription);
+
+        setSubscription({
+          role: subscription.data().role,
+          current_period_end: subscription.data().current_period_end.seconds,
+          current_period_start: subscription.data().current_period_start.seconds,
+        });
+      });
+    });
+  }, [user.uid]);
 
   /* EFFECT - PULL PRODUCTS (PLANS) INFO FROM DB ONCE ON MOUNT */
   useEffect(() => {
@@ -45,7 +67,8 @@ const PlansScreen = () => {
     });
   }, []);
 
-  // console.log(products);
+  console.log(products);
+  console.log(subscription);
 
   /* LOAD CHECKOUT FUNC */
   const loadCheckout = async (priceId) => {
@@ -60,20 +83,6 @@ const PlansScreen = () => {
     onSnapshot(docRef, async (snap) => {
       // console.log(snap);
 
-      // WORKS, BUT DNU //
-      // const { error, url } = snap.data();
-
-      // if (error) {
-      //   // Show an error to your customer and
-      //   // inspect your Cloud Function logs in the Firebase console.
-      //   alert(`An error occured: ${error.message}`);
-      // }
-      // if (url) {
-      //   // We have a Stripe Checkout URL, let's redirect.
-      //   window.location.assign(url);
-      // }
-
-      // WORKS! //
       const { error, sessionId } = snap.data();
 
       if (error) {
