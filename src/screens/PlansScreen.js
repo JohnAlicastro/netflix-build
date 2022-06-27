@@ -16,18 +16,15 @@ const PlansScreen = () => {
   /* STATE - WHICH SUBSCRIPTION USER HAS ACTIVE */
   const [subscription, setSubscription] = useState(null);
 
-  /* EFFECT - PULL USER SUBSCRIPTION INFO FROM DB */
+  /* EFFECT - PULL USER SUBSCRIPTION INFO FROM DB BASED ON USER.UID */
   useEffect(() => {
     // QUERY //
     const q = query(collection(db, `customers/${user.uid}/subscriptions`));
 
     // GET DOCS FROM FIREBASE //
     getDocs(q).then((querySnapshot) => {
-      // console.log(querySnapshot);
-
       querySnapshot.forEach(async (subscription) => {
-        // console.log(subscription);
-
+        // SET STATE OF SUBSCRIPTION DATA //
         setSubscription({
           role: subscription.data().role,
           current_period_end: subscription.data().current_period_end.seconds,
@@ -96,15 +93,15 @@ const PlansScreen = () => {
         stripe.redirectToCheckout({ sessionId });
       }
     });
-
-    // console.log(docRef);
   };
 
   /* RETURN RENDER */
   return (
     <div className='PlansScreen'>
       {Object.entries(products).map(([productId, productData]) => {
-        // TODO: add logic to check if users subscription is active...
+        // GET USER CURRENT PACKAGE INFO //
+        const isCurrentPackage = productData.name?.toLowerCase().includes(subscription?.role);
+
         return (
           <div className='plansScreen__plan'>
             <div className='plansScreen__info'>
@@ -112,7 +109,8 @@ const PlansScreen = () => {
               <h6>{productData.description}</h6>
             </div>
 
-            <button onClick={() => loadCheckout(productData.prices.priceId)}>Subscribe</button>
+            {/* CONDITIONAL TEXT RENDERING FOR CURRENT PACKAGE / ONLY LOAD CHECKOUT IF NOT CURRENT PACKAGE */}
+            <button onClick={() => !isCurrentPackage && loadCheckout(productData.prices.priceId)}>{isCurrentPackage ? `Current Package` : `Subscribe`}</button>
           </div>
         );
       })}
