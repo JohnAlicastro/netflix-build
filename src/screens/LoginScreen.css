@@ -22,7 +22,7 @@
   padding-left: 20px;
 }
 
-/* .loginScreen__button {
+.loginScreen__button {
   position: fixed;
   right: 20px;
   top: 20px;
@@ -33,7 +33,7 @@
   font-weight: 600;
   border: none;
   cursor: pointer;
-} */
+}
 
 .loginScreen__body {
   position: absolute;
