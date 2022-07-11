@@ -1,4 +1,4 @@
-## Just a fun little project cloning the Netflix UI using React, Redux, Firebase and Stripe with authentication and payment processing using Stripe's dev environment
+=) Just a fun little project cloning the Netflix UI using React, Redux, Firebase and Stripe with authentication and payment processing using Stripe's dev environment.
 
 # Getting Started with Create React App and Redux
 
