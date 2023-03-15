@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import './LoginScreen.css';
 import SignupScreen from './SingupScreen';
 
-/* LOGIN SCREEN COMPONENT */
 const LoginScreen = () => {
-  /* STATE - SIGN IN */
   const [signIn, setSignIn] = useState(false);
 
-  /* RETURN RENDER */
   return (
     <div className='loginScreen'>
       <div className='loginScreen__background'>
@@ -19,7 +16,6 @@ const LoginScreen = () => {
       </div>
 
       <div className='loginScreen__body'>
-        {/* CONDINITIAL RENDER BASED ON IF signIn STATE IS TRUE OR FALSE */}
         {signIn ? (
           <SignupScreen />
         ) : (

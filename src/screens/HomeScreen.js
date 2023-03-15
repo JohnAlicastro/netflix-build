@@ -5,9 +5,7 @@ import Banner from '../components/Banner';
 import Row from '../components/Row';
 import requests from '../api/Requests';
 
-/* HOMESCREEN COMPONENT */
 const HomeScreen = () => {
-  /* RETURN RENDER */
   return (
     <div className='homeScreen'>
       <Nav />

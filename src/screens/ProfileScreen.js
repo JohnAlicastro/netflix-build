@@ -1,19 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../features/userSlice';
-// IMPORTING auth FROM LOCAL firebase.js FILE IN src FOLDER //
 import { auth } from '../firebase';
 import { signOut } from 'firebase/auth';
 import Nav from '../components/Nav';
 import PlansScreen from './PlansScreen';
 import './ProfileScreen.css';
 
-/* PROFILESCREEN COMPONENT */
 const ProfileScreen = () => {
-  /* USER VARIABLE GETTING user FROM REDUX STORE, USED FOR RETURN RENDER ROUTER BELOW */
   const user = useSelector(selectUser);
 
-  /* RETURN RENDER */
   return (
     <div className='profileScreen'>
       <Nav />

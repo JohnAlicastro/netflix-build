@@ -1,20 +1,16 @@
 import React, { useRef } from 'react';
-// IMPORTING auth FROM LOCAL firebase.js FILE IN src FOLDER //
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import './SingupScreen.css';
 
-/* SIGNUP SCREEN COMPONENT */
 const SingupScreen = () => {
-  /* REF (STATE) - EMAIL AND PASSWORD FROM INPUT FORM BELOW */
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  /* REGISTER USER FUNC */
+  /* REGISTER USER */
   const register = (e) => {
     e.preventDefault();
 
-    // TRY TO CREATE USER IN FIREBASE //
     createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
       .then((authUser) => {
         console.log(authUser);
@@ -25,11 +21,10 @@ const SingupScreen = () => {
       });
   };
 
-  /* SIGNIN USER FUNC */
+  /* SIGNIN USER */
   const signIn = (e) => {
     e.preventDefault();
 
-    // TRY TO SIGNIN USER IN FIREBASE //
     signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
       .then((authUser) => {
         console.log(authUser);
@@ -40,7 +35,6 @@ const SingupScreen = () => {
       });
   };
 
-  /* RETURN RENDER */
   return (
     <div className='singupScreen'>
       <form>

@@ -2,26 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Nav.css';
 
-/* NAV COMPONENT */
 const Nav = () => {
-  /* STATE - SHOW NAV__BLACK */
   const [show, handleShow] = useState(false);
 
-  /* NAVIGATE - REACT ROUTER DOM - PASSING IN '/profile' or '/' ONCLICK OF imgS IN RETURN RENDER BELOW */
   const navigate = useNavigate();
 
-  /* FUNC TO SHOW NAV__BLACK IF SCROLLED DOWN PAST 100 */
+  /* SHOW NAV__BLACK IF SCROLLED DOWN PAST 100 */
   const transitionNavBar = () => {
     window.scrollY > 100 ? handleShow(true) : handleShow(false);
   };
 
-  /* EFFECT - TRACK SCROLL FOR transitionNavBar FUNC ABOVE */
+  /* TRACK SCROLL FOR transitionNavBar ABOVE */
   useEffect(() => {
     window.addEventListener('scroll', transitionNavBar);
     return () => window.removeEventListener('scroll', transitionNavBar);
   });
 
-  /* RETURN RENDER */
   return (
     <div className={`nav ${show && 'nav__black'}`}>
       <div className='nav__contents'>
