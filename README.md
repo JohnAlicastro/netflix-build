@@ -31,17 +31,16 @@ $ npm start
 <br/>
 
 ** You will need to provide a `.env` file with the following variables **
-
 <br/>
 
 `REACT_APP_TMDB_API_KEY`
 <br/>
-( your API key from https://www.themoviedb.org/ )
+(your API key from https://www.themoviedb.org/)
 <br/>
 
 `REACT_APP_STRIPE_KEY`
 <br/>
-( your publishable key from Stripe )
+(your publishable key from Stripe)
 <br/>
 
 `REACT_APP_FB_API_KEY`
@@ -56,5 +55,5 @@ $ npm start
 <br/>
 `REACT_APP_FB_APP_ID`
 <br/>
-( your Firebase config information )
+(your Firebase config information)
 <br/>
