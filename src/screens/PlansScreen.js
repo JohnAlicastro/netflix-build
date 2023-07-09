@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { doc, collection, query, where, getDocs, getDoc, setDoc, onSnapshot, addDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, onSnapshot, addDoc } from 'firebase/firestore';
 import db from '../firebase';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../features/userSlice';
