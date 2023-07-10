@@ -3,13 +3,13 @@
 A fun project cloning the Netflix UI with authentication and payment processing
 <br/>
 
-<!-- --- -->
-
 ## Tech Notes
 
 Built with: React, Redux, Firebase, The Movie DB's API, and Stripe using Stripe's dev environment
 <br/>
 <br/>
+
+<!-- --- -->
 
 <img width="1440" alt="netflix-build landing" src="https://user-images.githubusercontent.com/93687275/252127896-cde4fd27-bcec-43fd-a296-387a2682128d.png">
 <br/>
