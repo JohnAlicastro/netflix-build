@@ -1,6 +1,8 @@
 # netflix-build
 
-A fun project cloning the Netflix UI using React, Redux, Firebase & Stripe with authentication and payment processing using Stripe's dev environment
+A fun project cloning the Netflix UI.
+<br/>
+Built with React, Redux, Firebase & Stripe with authentication and payment processing using Stripe's dev environment.
 <br/>
 <br/>
 
